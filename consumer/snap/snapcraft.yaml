@@ -1,0 +1,30 @@
+name: contentconsumer
+version: '1.0'
+summary: Hello world content consumer
+description: |
+  A Sample content provider.
+
+grade: devel
+base: core20
+confinement: strict
+
+apps:
+  hello:
+    command:
+       hello
+
+parts:
+  data-c:
+    plugin: dump
+    source: ./data-c
+  hello:
+    plugin: dump
+    source: .
+
+
+plugs:
+  shared-data:
+    content: shared-data
+    interface: content
+    target: data-c
+    default-provider: contentprovider:shared-data

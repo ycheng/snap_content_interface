@@ -1,0 +1,29 @@
+name: contentprovider
+version: '1.0'
+summary: Hello world content provider.
+description: |
+  A Sample content provider.
+
+grade: devel
+base: core20
+confinement: strict
+
+apps:
+  hello:
+    command:
+       hello
+
+parts:
+  data:
+    plugin: dump
+    source: ./data
+  hello:
+    plugin: dump
+    source: .
+
+slots:
+  shared-data:
+    content: shared-data
+    interface: content
+    read:
+    - /data
